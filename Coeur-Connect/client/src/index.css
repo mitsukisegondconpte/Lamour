@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Romantic Palette - Soft Pinks & Deep Reds */
+  --background: 340 100% 99%;    /* Very light pink */
+  --foreground: 345 50% 20%;     /* Deep wine red/brown */
+  
+  --primary: 345 80% 60%;        /* Vibrant Rose */
+  --primary-foreground: 0 0% 100%;
+  
+  --secondary: 330 40% 94%;      /* Soft blush secondary */
+  --secondary-foreground: 345 50% 30%;
+  
+  --muted: 330 20% 96%;
+  --muted-foreground: 345 20% 50%;
+  
+  --accent: 350 90% 92%;         /* Accent highlight */
+  --accent-foreground: 345 60% 40%;
+  
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 98%;
+  
+  --border: 340 30% 90%;
+  --input: 340 30% 90%;
+  --ring: 345 80% 60%;
+  
+  --radius: 1rem;
+  
+  /* Fonts */
+  --font-sans: 'DM Sans', sans-serif;
+  --font-display: 'Playfair Display', serif;
+  --font-handwriting: 'Architects Daughter', cursive;
+}
+
+@layer base {
+  body {
+    @apply bg-background text-foreground antialiased selection:bg-primary/20 selection:text-primary;
+    font-family: var(--font-sans);
+    background-image: radial-gradient(at 0% 0%, hsla(340,100%,96%,1) 0px, transparent 50%),
+                      radial-gradient(at 100% 100%, hsla(320,100%,96%,1) 0px, transparent 50%);
+    background-attachment: fixed;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    @apply font-bold tracking-tight text-foreground;
+  }
+
+  .font-handwriting {
+    font-family: var(--font-handwriting);
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary via-pink-500 to-rose-500;
+  }
+  
+  .glass-card {
+    @apply bg-white/60 backdrop-blur-xl border border-white/50 shadow-xl shadow-primary/5;
+  }
+
+  .floating-hearts {
+    animation: float 6s ease-in-out infinite;
+  }
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-primary/20 rounded-full hover:bg-primary/40 transition-colors;
+}
